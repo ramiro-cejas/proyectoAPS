@@ -8,7 +8,7 @@ app.use(express.static('src'));
 
 // Ruta de inicio que responde con el archivo HTML
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/src/registrarCliente.html'); // Cambia la ruta según la ubicación de tu archivo HTML
+    res.sendFile(__dirname + '/src/html/registrarCliente.html'); // Cambia la ruta según la ubicación de tu archivo HTML
 });
 
 // Iniciar el servidor

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../js/connection.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/registrarCliente.css">
+    <title>Registrar Cliente</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div class="testbox">
+      <div class="formulario">
+        <div class="banner">
+          <h1>Registrar Cliente</h1>
+        </div>
+        <br/>
+        <p> <center>Por favor ingrese los datos del cliente.</center>
+        </p>
+        <br/>
+        <div class="colums">
+          <div class="item">
+            <label for="fname"> Nombre<span>*</span></label>
+            <input id="nombre" type="text" name="fname" required/>
+          </div>
+          <div class="item">
+            <label for="lname"> Apellido<span>*</span></label>
+            <input id="apellido" type="text" name="lname" required/>
+          </div>
+          <div class="item">
+            <p>Fecha de nacimiento<span>*</span></p>
+            <input id="nacimiento" type="date" name="bdate" required/>
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <div class="item">
+            <p>Genero<span>*</span></p>
+            <select id="genero" class="">
+              <option selected value="none" disabled selected></option>
+              <option value="m" >Masculino</option>
+              <option value="f">Femenino</option>
+              <option value="o">Otro</option>
+            </select>
+          </div>
+          <div class="item">
+            <label for="eaddress">Email Address<span>*</span></label>
+            <input id="email" type="email"   name="eaddress" required/>
+          </div>
+          <div class="item">
+            <label for="phone">Telefono<span>*</span></label>
+            <input id="telefono" type="tel"   name="phone" required/>
+          </div>
+          <div class="item">
+            <label for="address1">Dirección<span>*</span></label>
+            <input id="direccion" type="text"   name="address1" required/>
+          </div>
+          <div class="item">
+            <label for="city">Ciudad<span>*</span></label>
+            <input id="ciudad" type="text"   name="city" required/>
+          </div>
+          <div class="item">
+            <label for="state">Provincia<span>*</span></label>
+            <input id="provincia" type="text"   name="state" required/>
+          </div>
+          <div class="item">
+            <label for="code">Código Postal<span>*</span></label>
+            <input id="codigoPostal" type="text"   name="code" required/>
+          </div>
+        </div>
+        <div class="item">
+          <label for="visit">Aclaraciones</label>
+          <textarea id="aclaraciones" rows="3"></textarea>
+        </div>
+        <div class="btn-block">
+          <button type="submit" onclick="signUpClient()">Registrar</button>
+        </div>
+    </div>
+    </div>
+  </body>
+</html>
+<script>
+    //load the image of the banner
+    var banner = document.getElementsByClassName("banner")[0];
+    banner.style.backgroundImage = "url('../fondo.png')";
+
+    function signUpClient(){
+        //check all fields
+        var nombre = document.getElementById("nombre").value;
+        var apellido = document.getElementById("apellido").value;
+        var nacimiento = document.getElementById("nacimiento").value;
+        var genero = document.getElementById("genero").value;
+        var email = document.getElementById("email").value;
+        var telefono = document.getElementById("telefono").value;
+        var direccion = document.getElementById("direccion").value;
+        var ciudad = document.getElementById("ciudad").value;
+        var provincia = document.getElementById("provincia").value;
+        var codigoPostal = document.getElementById("codigoPostal").value;
+        var aclaraciones = document.getElementById("aclaraciones").value;
+        if(nombre == "" || apellido == "" || nacimiento == "" || genero == "" || email == "" || telefono == "" || direccion == "" || ciudad == "" || provincia == "" || codigoPostal == "" || aclaraciones == ""){
+            alert("Por favor complete todos los campos");
+        } else if(!validarEmail(email)) {
+            alert("El email no es valido");
+        } else{
+            //show windows soliciting username and password of the employe who is registering the client
+            var username = prompt("Ingrese su nombre de usuario");
+            var password = prompt("Ingrese su contraseña");
+            if(username == "" || password == "") {
+                alert("Por favor ingrese su nombre de usuario y contraseña");
+            } else if(!tieneMayuscula(password)) {
+                alert("La contraseña debe tener al menos una letra mayúscula");
+            } else {
+                //call the procedure of mysql to register the client
+            }
+        }
+        
+    }
+
+    function validarEmail(email) {
+      // Expresión regular para validar el formato de un correo electrónico
+      var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      return regex.test(email);
+    }
+    function tieneMayuscula(palabra) {
+      // Expresión regular para buscar al menos una letra mayúscula
+      var regex = /[A-Z]/;
+      return regex.test(palabra);
+    }
+</script>
