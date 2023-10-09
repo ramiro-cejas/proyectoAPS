@@ -5,6 +5,8 @@ const port = 3000;
 // Configurar Express para servir archivos estáticos desde la carpeta "public"
 app.use(express.static('public'));
 app.use(express.static('src'));
+app.use(express.static('src/css'));
+app.use(express.static('src/js'));
 
 // Ruta de inicio que responde con el archivo HTMLnp
 app.get('/', (req, res) => {
