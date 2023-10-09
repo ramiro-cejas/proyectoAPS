@@ -38,7 +38,7 @@ html, body {
     }
     .banner {
     position: relative;
-    height: 300px; 
+    height: 100px; 
     background-size: cover;
     display: flex;
     justify-content: center;

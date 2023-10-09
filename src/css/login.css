@@ -9,7 +9,7 @@ body {
 /* Estilos para el contenedor principal del formulario */
 .login-container {
     max-width: 400px;
-    margin: 0 auto;
+    margin: 10% auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
@@ -33,7 +33,7 @@ body {
 /* Estilos para los campos de entrada de texto y contraseñas */
 .form-group input[type="text"],
 .form-group input[type="password"] {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -45,7 +45,7 @@ body {
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #669999;
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -54,7 +54,7 @@ body {
 }
 
 .form-group button:hover {
-    background-color: #0056b3;
+    background-color: #476868;
 }
 
 /* Estilos para los mensajes de error */

@@ -3,7 +3,7 @@
   <head>
     <script src="../js/connection.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/registrarCliente.css">
-    <title>Registrar Cliente</title>
+    <title>Registrar Empleado</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   </head>
@@ -12,10 +12,10 @@
     <div class="testbox">
       <div class="formulario">
         <div class="banner">
-          <h1>Registrar Cliente</h1>
+          <h1>Registrar Empleado</h1>
         </div>
         <br/>
-        <p> <center>Por favor ingrese los datos del cliente.</center>
+        <p> <center>Por favor ingrese los datos del empleado.</center>
         </p>
         <br/>
         <div class="colums">
@@ -26,6 +26,10 @@
           <div class="item">
             <label for="lname"> Apellido<span>*</span></label>
             <input id="apellido" type="text" name="lname" required/>
+          </div>
+          <div class="item">
+            <label for="lname"> CUIL<span>*</span></label>
+            <input id="cuil" type="number" name="lname" required/>
           </div>
           <div class="item">
             <p>Fecha de nacimiento<span>*</span></p>
@@ -42,7 +46,7 @@
             </select>
           </div>
           <div class="item">
-            <label for="eaddress">Email Address<span>*</span></label>
+            <label for="eaddress">E-Mail<span>*</span></label>
             <input id="email" type="email"   name="eaddress" required/>
           </div>
           <div class="item">
@@ -65,13 +69,17 @@
             <label for="code">Código Postal<span>*</span></label>
             <input id="codigoPostal" type="text"   name="code" required/>
           </div>
+          <div class="item">
+            <label for="code">Cargo<span>*</span></label>
+            <input id="cargo" type="text"   name="code" required/>
+          </div>
         </div>
         <div class="item">
           <label for="visit">Aclaraciones</label>
           <textarea id="aclaraciones" rows="3"></textarea>
         </div>
         <div class="btn-block">
-          <button type="submit" onclick="signUpClient()">Registrar</button>
+          <button type="submit" onclick="signUpEmployee()">Registrar</button>
         </div>
     </div>
     </div>
@@ -82,7 +90,7 @@
     var banner = document.getElementsByClassName("banner")[0];
     banner.style.backgroundImage = "url('../fondo.png')";
 
-    function signUpClient(){
+    function signUpEmployee(){
         //check all fields
         var nombre = document.getElementById("nombre").value;
         var apellido = document.getElementById("apellido").value;
@@ -94,24 +102,52 @@
         var ciudad = document.getElementById("ciudad").value;
         var provincia = document.getElementById("provincia").value;
         var codigoPostal = document.getElementById("codigoPostal").value;
+        var cuil = document.getElementById("cuil").value;
         var aclaraciones = document.getElementById("aclaraciones").value;
-        if(nombre == "" || apellido == "" || nacimiento == "" || genero == "" || email == "" || telefono == "" || direccion == "" || ciudad == "" || provincia == "" || codigoPostal == "" || aclaraciones == ""){
+        var cargo = document.getElementById("cargo").value;
+        if(nombre == "" || apellido == "" || nacimiento == "" || genero == "" || email == "" || telefono == "" || direccion == "" || ciudad == "" || provincia == "" || codigoPostal == "" || cuil == "" || cargo == ""){
             alert("Por favor complete todos los campos");
         } else if(!validarEmail(email)) {
             alert("El email no es valido");
         } else{
-            //show windows soliciting username and password of the employe who is registering the client
-            var username = prompt("Ingrese su nombre de usuario");
-            var password = prompt("Ingrese su contraseña");
-            if(username == "" || password == "") {
-                alert("Por favor ingrese su nombre de usuario y contraseña");
-            } else if(!tieneMayuscula(password)) {
-                alert("La contraseña debe tener al menos una letra mayúscula");
-            } else {
-                //call the procedure of mysql to register the client
-            }
+          //call the procedure of mysql to register the client
+          //for now we just print the generated password and the username to the client, but we should send an email
+          var password = generatePassword();
+          var legajo = generateLegajo();
+          alert("Se ha registrado el empleado "+cuil+" con legajo "+legajo+"\nSu usuario es: " + legajo + " y su contraseña es: " + password);
         }
-        
+    }
+
+    function generateLegajo(){
+      //generate a random legajo
+      var legajo = "";
+      for(var i = 0; i < 8; i++){
+        legajo += Math.floor(Math.random() * 10);
+      }
+      return legajo;
+    }
+
+    function generatePassword(){
+      //generate a random password that contains at least one uppercase letter and one number
+      var password = "";
+      var mayuscula = false;
+      var numero = false;
+      while(!mayuscula || !numero){
+        password = "";
+        for(var i = 0; i < 8; i++){
+          var random = Math.floor(Math.random() * 3);
+          if(random == 0){
+            password += String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+          } else if(random == 1){
+            password += String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+            mayuscula = true;
+          } else{
+            password += Math.floor(Math.random() * 10);
+            numero = true;
+          }
+        }
+      }
+      return password;
     }
 
     function validarEmail(email) {
@@ -119,9 +155,17 @@
       var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
       return regex.test(email);
     }
+    
     function tieneMayuscula(palabra) {
       // Expresión regular para buscar al menos una letra mayúscula
       var regex = /[A-Z]/;
       return regex.test(palabra);
     }
+
+    function tieneNumero(palabra) {
+      // Expresión regular para buscar al menos un número
+      var regex = /[0-9]/;
+      return regex.test(palabra);
+    }
+
 </script>

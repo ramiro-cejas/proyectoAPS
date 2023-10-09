@@ -8,7 +8,7 @@ app.use(express.static('src'));
 
 // Ruta de inicio que responde con el archivo HTMLnp
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/src/html/login.html'); // Cambia la ruta según la ubicación de tu archivo HTML
+    res.sendFile(__dirname + '/src/login.html'); // Cambia la ruta según la ubicación de tu archivo HTML
 });
 
 // Iniciar el servidor

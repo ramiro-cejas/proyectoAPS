@@ -6,6 +6,7 @@ CREATE TABLE clientes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
     apellido VARCHAR(255) NOT NULL,
+    dni VARCHAR(20) NOT NULL,
     fecha_nacimiento DATE NOT NULL,
     genero VARCHAR(10),
     direccion VARCHAR(255) NOT NULL,
@@ -22,8 +23,19 @@ CREATE TABLE clientes (
 CREATE TABLE empleados (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
+    apellido VARCHAR(255) NOT NULL,
+    cuil VARCHAR(20) NOT NULL,
     cargo VARCHAR(255) NOT NULL,
     numero_identificacion VARCHAR(20) NOT NULL
+    fecha_nacimiento DATE NOT NULL,
+    genero VARCHAR(10),
+    direccion VARCHAR(255) NOT NULL,
+    provincia VARCHAR(50) NOT NULL,
+    pais VARCHAR(50) NOT NULL,
+    codigo_postal VARCHAR(20),
+    telefono VARCHAR(20),
+    email VARCHAR(255) NOT NULL,
+    aclaraciones TEXT
     -- Otros campos relacionados con los empleados
 );
 
@@ -71,6 +83,7 @@ DELIMITER //
 CREATE PROCEDURE RegistrarNuevoCliente(
     IN p_nombre VARCHAR(255),
     IN p_apellido VARCHAR(255),
+    IN p_dni VARCHAR(20),
     IN p_fecha_nacimiento DATE,
     IN p_genero VARCHAR(10),
     IN p_direccion VARCHAR(255),
@@ -95,10 +108,10 @@ BEGIN
     
     -- Si el empleado existe y las credenciales son válidas, proceder con la verificación del cliente
     IF p_empleado_valido = 1 THEN
-        -- Verificar si el cliente ya existe (basado en nombre, apellido y fecha de nacimiento)
+        -- Verificar si el cliente ya existe (basado en dni)
         SELECT COUNT(*) INTO p_cliente_existente
         FROM clientes
-        WHERE nombre = p_nombre AND apellido = p_apellido AND fecha_nacimiento = p_fecha_nacimiento;
+        WHERE dni = p_dni;
         
         -- Si el cliente no existe, proceder con el registro del cliente
         IF p_cliente_existente = 0 THEN
@@ -110,8 +123,8 @@ BEGIN
             SET p_password = SHA2(p_password, 256);
 
             -- Insertar el nuevo cliente en la tabla de clientes
-            INSERT INTO clientes (nombre, apellido, fecha_nacimiento, genero, direccion, provincia, pais, codigo_postal, telefono, email, aclaraciones)
-            VALUES (p_nombre, p_apellido, p_fecha_nacimiento, p_genero, p_direccion, p_provincia, p_pais, p_codigo_postal, p_telefono, p_email, p_aclaraciones);
+            INSERT INTO clientes (nombre, apellido, dni, fecha_nacimiento, genero, direccion, provincia, pais, codigo_postal, telefono, email, aclaraciones)
+            VALUES (p_nombre, p_apellido, dni, p_fecha_nacimiento, p_genero, p_direccion, p_provincia, p_pais, p_codigo_postal, p_telefono, p_email, p_aclaraciones);
 
             -- Obtener el ID del nuevo cliente
             SET @cliente_id = LAST_INSERT_ID();
