@@ -13,10 +13,6 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/src/login.html'); // Cambia la ruta según la ubicación de tu archivo HTML
 });
 
-app.get('/css/login.css', (req, res) => {
-    res.sendFile(__dirname + '/src/login.css'); // Cambia la ruta según la ubicación de tu archivo css
-  })
-
 // Iniciar el servidor
 app.listen(port, () => {
     console.log(`Servidor web en http://localhost:${port}`);
