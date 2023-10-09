@@ -15,3 +15,5 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`Servidor web en http://localhost:${port}`);
 });
+
+module.export = app;
