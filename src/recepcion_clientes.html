@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recepción de Clientes</title>
+    <link rel="stylesheet" href="css/recepcion_clientes.css">
+</head>
+<body>
+    <div class="banner">
+        <h1>Bienvenido a nuestra página de recepción de clientes</h1>
+    </div>
+    <div class="testbox">
+        <div class="formulario">
+            <div class="buttons-container">
+                <button id="reintegro-button">Solicitar Reintegro</button>
+                <button id="cobertura-button">Solicitar Cobertura</button>
+            </div>
+        </div>
+    </div>
+    <script>
+       //load the image of the banner
+        var banner = document.getElementsByClassName("banner")[0];
+        banner.style.backgroundImage = "url('../fondo.png')";
+
+        document.getElementById('reintegro-button').addEventListener('click', function() {
+            window.location.href = "reintegro.html";
+        });
+
+        document.getElementById('cobertura-button').addEventListener('click', function() {
+            window.location.href = "cobertura.html";
+        });
+    </script>
+</body>
+</html>
