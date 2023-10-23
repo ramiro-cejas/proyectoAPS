@@ -39,7 +39,7 @@
                 <button type="submit" onclick="asignarCobertura()">Registrar</button>
             </div>
             <div id="infoPlan" class="info-plan">
-                <!-- Aquí se mostrará la información del plan seleccionado -->
+                <!-- Acá se mostrará la información del plan seleccionado -->
             </div>
         </div>
     </div>
@@ -57,6 +57,8 @@
 
         if(dni == "" || edad == "" || plan == "none") {
             alert("completa todos los campos");
+        } else if(dni < 0 || edad < 0) {
+            alert("Dni o edad invalidos");
         } else {
             alert("Nuevo plan asignado!");
         }

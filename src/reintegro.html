@@ -7,13 +7,62 @@
     <link rel="stylesheet" href="css/recepcion_clientes.css">
 </head>
 <body>
-    <div class="banner">
-        <h1>Reintegro clientes</h1>
+    <div class="testbox">
+        <div class="formulario">
+            <div class="banner">
+                <h1>Solicitar reintegro</h1>
+            </div>
+            <br />
+            <p> <center>Por favor complete la solicitud.</center>
+            </p>
+            <br />
+            <div class="colums">
+                <div class="item">
+                    <label for="dni"> DNI<span>*</span></label>
+                    <input id="dni" type="number" name="dni" required/>
+                </div>
+                <div class="item">
+                    <p>Fecha<span>*</span></p>
+                    <input id="fecha" type="date" name="fecha" required/>
+                    <i class="fas fa-calendar-alt"></i>
+                  </div>
+                <div class="item">
+                    <p>Plan del asociado<span>*</span></p>
+                    <select id="plan" class="">
+                        <option selected value="none" disabled></option>
+                        <option value="o">ORO</option>
+                        <option value="p">PLATA</option>
+                        <option value="c">COBRE</option>
+                    </select>
+                </div>
+            </div>
+            <div class="btn-block">
+                <button type="submit" onclick="solicitarReintegro()">Solicitar</button>
+            </div>
+            <div id="infoPlan" class="info-plan">
+                <!-- Acá se mostrará la información del plan seleccionado -->
+            </div>
+        </div>
     </div>
 
     <script>
         //load the image of the banner
         var banner = document.getElementsByClassName("banner")[0];
         banner.style.backgroundImage = "url('../fondo.png')";
+
+        function solicitarReintegro() {
+        //check all fields
+        var dni = document.getElementById("dni").value;
+        var fecha = document.getElementById("fecha").value;
+        var plan = document.getElementById("plan").value;
+
+        if(dni == "" || fecha == "" || plan == "none") {
+            alert("Completa todos los campos");
+        } else if(dni < 0) {
+            alert("Dni invalido");
+        } else {
+            alert("Solicitud de reintegro registrada!");
+        }
+        }
     </script>
-</body>    
+</body>
