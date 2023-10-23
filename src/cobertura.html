@@ -9,40 +9,58 @@
 <body>
     <div class="testbox">
         <div class="formulario">
-          <div class="banner">
-            <h1>Solicitar cobertura</h1>
-          </div>
-          <br/>
-          <p> <center>Por favor seleccione un plan.</center>
-          </p>
-          <br/>
-          <div class="colums">
-            <div class="item">
-                <label for="lname"> DNI<span>*</span></label>
-                <input id="dni" type="number" name="lname" required/>
-              </div>
-            <div class="item">
-                <label for="edad"> Edad<span>*</span></label>
-                <input id="edad" type="number" name="edad" required/>
+            <div class="banner">
+                <h1>Solicitar cobertura</h1>
             </div>
-            <div class="item">
-                <p>Plan<span>*</span></p>
-                <select id="plan" class="">
-                  <option selected value="none" disabled selected></option>
-                  <option value="o" >ORO</option>
-                  <option value="p">PLATA</option>
-                  <option value="c">COBRE</option>
-                </select>
-              </div>
-          <div class="btn-block">
-            <button type="submit" onclick="signUpClient()">Registrar</button>
-          </div>
-      </div>
-      </div>
+            <br />
+            <p> <center>Por favor seleccione un plan.</center>
+            </p>
+            <br />
+            <div class="colums">
+                <div class="item">
+                    <label for="dni"> DNI<span>*</span></label>
+                    <input id="dni" type="number" name="dni" required/>
+                </div>
+                <div class="item">
+                    <label for="edad"> Edad<span>*</span></label>
+                    <input id="edad" type="number" name="edad" required/>
+                </div>
+                <div class="item">
+                    <p>Plan<span>*</span></p>
+                    <select id="plan" class="" onchange="mostrarInfoPlan()">
+                        <option selected value="none" disabled></option>
+                        <option value="o">ORO</option>
+                        <option value="p">PLATA</option>
+                        <option value="c">COBRE</option>
+                    </select>
+                </div>
+            </div>
+            <div class="btn-block">
+                <button type="submit" onclick="asignarCobertura()">Registrar</button>
+            </div>
+            <div id="infoPlan" class="info-plan">
+                <!-- Aquí se mostrará la información del plan seleccionado -->
+            </div>
+        </div>
+    </div>
+
     <script>
         //load the image of the banner
         var banner = document.getElementsByClassName("banner")[0];
         banner.style.backgroundImage = "url('../fondo.png')";
+
+        function asignarCobertura() {
+            //check all fields
+        var dni = document.getElementById("dni").value;
+        var edad = document.getElementById("edad").value;
+        var plan = document.getElementById("plan").value;
+
+        if(dni == "" || edad == "" || plan == "none") {
+            alert("completa todos los campos");
+        } else {
+            alert("Nuevo plan asignado!");
+        }
+        }
 
         var planOro = {
             nombre: "Plan oro",
@@ -59,5 +77,34 @@
             cobertura: "50%",
             costo: 5000
         };
+        
+        function mostrarInfoPlan() {
+            var planSeleccionado = document.getElementById("plan").value;
+            var infoPlan = document.getElementById("infoPlan");
+
+            // Limpia el contenido del recuadro de información del plan
+            infoPlan.innerHTML = "";
+
+            if (planSeleccionado === "o") {
+                infoPlan.innerHTML = `
+                    <h2>${planOro.nombre}</h2>
+                    <p>Cobertura: ${planOro.cobertura}</p>
+                    <p>Costo: $${planOro.costo}</p>
+                `;
+            } else if (planSeleccionado === "p") {
+                infoPlan.innerHTML = `
+                    <h2>${planPlata.nombre}</h2>
+                    <p>Cobertura: ${planPlata.cobertura}</p>
+                    <p>Costo: $${planPlata.costo}</p>
+                `;
+            } else if (planSeleccionado === "c") {
+                infoPlan.innerHTML = `
+                    <h2>${planCobre.nombre}</h2>
+                    <p>Cobertura: ${planCobre.cobertura}</p>
+                    <p>Costo: $${planCobre.costo}</p>
+                `;
+            }
+        }
     </script>
 </body>
+</html>
