@@ -3,11 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recepción de Clientes</title>
+    <title>Coberturas</title>
     <link rel="stylesheet" href="css/recepcion_clientes.css">
 </head>
 <body>
-    <div class="banner">
-        <h1>cobertura clientes</h1>
-    </div>
+    <div class="testbox">
+        <div class="formulario">
+          <div class="banner">
+            <h1>Solicitar cobertura</h1>
+          </div>
+          <br/>
+          <p> <center>Por favor seleccione un plan.</center>
+          </p>
+          <br/>
+          <div class="colums">
+            <div class="item">
+                <label for="lname"> DNI<span>*</span></label>
+                <input id="dni" type="number" name="lname" required/>
+              </div>
+            <div class="item">
+                <label for="edad"> Edad<span>*</span></label>
+                <input id="edad" type="number" name="edad" required/>
+            </div>
+            <div class="item">
+                <p>Plan<span>*</span></p>
+                <select id="plan" class="">
+                  <option selected value="none" disabled selected></option>
+                  <option value="o" >ORO</option>
+                  <option value="p">PLATA</option>
+                  <option value="c">COBRE</option>
+                </select>
+              </div>
+          <div class="btn-block">
+            <button type="submit" onclick="signUpClient()">Registrar</button>
+          </div>
+      </div>
+      </div>
+    <script>
+        //load the image of the banner
+        var banner = document.getElementsByClassName("banner")[0];
+        banner.style.backgroundImage = "url('../fondo.png')";
+
+        var planOro = {
+            nombre: "Plan oro",
+            cobertura: "100%",
+            costo: 10000
+        };
+        var planPlata = {
+            nombre: "Plan plata",
+            cobertura: "70%",
+            costo: 7000
+        };
+        var planCobre = {
+            nombre: "Plan cobre",
+            cobertura: "50%",
+            costo: 5000
+        };
+    </script>
 </body>
