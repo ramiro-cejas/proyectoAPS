@@ -85,7 +85,6 @@ html, body {
     }
     .week {
     display:flex;
-    justfiy-content:space-between;
     }
     .colums {
     display:flex;

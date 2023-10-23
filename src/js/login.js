@@ -5,7 +5,7 @@ function login(){
         //window.location.href = "changePassword.html"; // @TODO descomentar
         window.location.href = "recepcion_clientes.html";
     }else if(username == "empleado1" && password == "empleado1" || username == "empleado2" && password == "empleado2"){
-        window.location.href = "registrarCliente.html";
+        window.location.href = "recepcion_empleado.html";
     }else if(username == "admin" && password == "admin"){
         window.location.href = "registrarEmpleado.html";
     }else{
