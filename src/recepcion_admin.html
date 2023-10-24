@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="/js/connection.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recepción de Admins</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="banner">
+        <h1>Bienvenido a nuestra página de recepción de administradores</h1>
+    </div>
+    <div class="testbox">
+        <div class="formulario">
+            <div class="buttons-container">
+                <button id="reg-cliente">Registrar<br>Cliente</button>
+                <button id="edit-cliente">Modificar<br>Cliente</button>
+                <button id="reg-empleado">Registrar<br>Empleado</button>
+                <button id="edit-empleado">Modificar<br>Empleado</button>
+                <button id="reg-plan">Registrar<br>Plan</button>
+                <button id="edit-plan">Modificar<br>Plan</button>
+            </div>
+            <br>
+            <button id="logout">Cerrar<br>Sesión</button>
+        </div>
+    </div>
+    <script>
+       //load the image of the banner
+        var banner = document.getElementsByClassName("banner")[0];
+        banner.style.backgroundImage = "url('../fondo.png')";
+
+        document.getElementById('reg-cliente').addEventListener('click', function() {
+            window.location.href = 'registrarCliente.html';
+        });
+        
+        document.getElementById('edit-cliente').addEventListener('click', function() {
+            window.location.href = 'listadoClientes.html';
+        });
+
+        document.getElementById('reg-empleado').addEventListener('click', function() {
+            window.location.href = 'registrarEmpleado.html';
+        });
+
+        document.getElementById('edit-empleado').addEventListener('click', function() {
+            window.location.href = 'listadoEmpleados.html';
+        });
+
+        document.getElementById('reg-plan').addEventListener('click', function() {
+            window.location.href = 'registrarPlan.html';
+        });
+
+        document.getElementById('edit-plan').addEventListener('click', function() {
+            window.location.href = 'listadoPlanes.html';
+        });
+
+        document.getElementById('logout').addEventListener('click', function() {
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

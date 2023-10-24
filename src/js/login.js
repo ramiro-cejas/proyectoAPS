@@ -7,7 +7,7 @@ function login(){
     }else if(username == "empleado1" && password == "empleado1" || username == "empleado2" && password == "empleado2"){
         window.location.href = "recepcion_empleado.html";
     }else if(username == "admin" && password == "admin"){
-        window.location.href = "registrarEmpleado.html";
+        window.location.href = "recepcion_admin.html";
     }else{
         alert("Usuario o contraseña incorrecta");
     }

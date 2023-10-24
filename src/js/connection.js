@@ -68,3 +68,7 @@ function registrarCliente(
         );
     });
 }
+
+function goBack() {
+    window.history.back();
+}

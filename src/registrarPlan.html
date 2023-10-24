@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="/js/connection.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <title>Registrar Cliente</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div class="testbox">
+      <div class="formulario">
+        <div class="banner">
+          <h1>Registrar Cliente</h1>
+        </div>
+        <br/>
+        <p> <center>Por favor ingrese los datos del plan.</center>
+        </p> 
+        <br/>
+        <div class="colums">
+          <div class="item">
+            <label for="fname"> Nombre<span>*</span></label>
+            <input id="nombre" type="text" name="fname" required/>
+          </div>
+          <div class="item">
+            <label for="lname"> Cobertura<span>*</span></label>
+            <input id="cobertura" type="text" name="lname" required/>
+          </div>
+          <div class="item">
+            <label for="lname"> Costo<span>*</span></label>
+            <input id="costo" type="number" name="lname" required/>
+          </div>
+          <div class="item">
+            <label for="visit">Descripción<span>*</span></label>
+            <textarea id="descripcion" rows="3"></textarea>
+          </div>
+        </div>
+        
+        <div class="btn-block">
+          <button type="submit" onclick="regPlan()">Registrar plan</button>
+          <button type="submit" onclick="goBack()">Volver</button>
+        </div>
+    </div>
+    </div>
+  </body>
+</html>
+<script>
+    //load the image of the banner
+    var banner = document.getElementsByClassName("banner")[0];
+    banner.style.backgroundImage = "url('../fondo.png')";
+
+    function regPlan(){
+        //check all fields
+        var nombre = document.getElementById("nombre").value;
+        var cobertura = document.getElementById("cobertura").value;
+        var costo = document.getElementById("costo").value;
+        var descripcion = document.getElementById("descripcion").value;
+
+        if (nombre == "" || cobertura == "" || costo == "" || descripcion == "") {
+            alert("Por favor complete todos los campos");
+        } else {
+            const userConfirmed = confirm("¿Desea registrar el plan: " + nombre + "?");
+            if (userConfirmed) {
+                alert("Se ha registrado el plan: " + nombre);
+                window.location.href = "listadoPlanes.html";
+            }
+        }
+    }
+
+    
+
+</script>

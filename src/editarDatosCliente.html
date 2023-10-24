@@ -68,7 +68,7 @@
             <input id="codigoPostal" type="text"   name="code" required placeholder="8000"/>
           </div>
           <div class="item">
-            <button type="submit" onclick="generateNewPassword()">Generar nueva contraseña</button>
+            <button type="submit" onclick="changePassword()">Cambiar Contraseña</button>
           </div>
         </div>
         <div class="item">
@@ -78,6 +78,7 @@
         
         <div class="btn-block">
           <button type="submit" onclick="updateInfo()">Actualizar Datos</button>
+          <button type="submit" onclick="goBack()">Volver</button>
         </div>
     </div>
     </div>
@@ -100,18 +101,8 @@
         }
     }
 
-    function generateNewPassword(){
-      var password = generatePassword();
-      var dni = document.getElementById("dni").placeholder;
-      
-      const userConfirmed = confirm("¿Desea generar una nueva contraseña para el usuario: " + dni + "?");
-      if (userConfirmed) {
-      // User clicked OK
-        alert("Se ha generado la nueva contraseña para el usuario: " + dni + "\nLa nueva contraseña es: " + password);
-      } else {
-      // User clicked Cancel
-      }
-               
+    function changePassword(){
+      window.location.href = "changePassword.html";
     }
 
     function generatePassword(){

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="/js/connection.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recepción de Empleados</title>
@@ -15,8 +16,8 @@
             <div class="buttons-container">
                 <button id="registrar-cliente">Registrar<br>cliente</button>
                 <button id="cobertura-button">Aprobar<br>solicitudes</button>
-                <button id="editar-clientes-button">Editar datos<br>de Clientes</button>
-
+                <button id="editar-clientes-button">Editar datos<br>de clientes</button>
+                <button id="editar-planes-button">Editar datos<br>de planes</button>
             </div>
         </div>
     </div>
@@ -51,6 +52,10 @@
 
         document.getElementById('editar-propio-button').addEventListener('click', function() {
             window.location.href = "editarDatosEmpleado.html";
+        });
+
+        document.getElementById('editar-planes-button').addEventListener('click', function() {
+            window.location.href = "listadoPlanes.html";
         });
     </script>
 </body>

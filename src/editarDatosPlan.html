@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="/js/connection.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <title>Editar Plan</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div class="testbox">
+      <div class="formulario">
+        <div class="banner">
+          <h1>Editar Plan</h1>
+        </div>
+        <br/>
+        <br/>
+        <div class="colums">
+          <div class="item">
+            <label for="fname"> Nombre<span>*</span></label>
+            <input id="nombre" type="text" name="fname" required placeholder="ORO"/>
+          </div>
+          <div class="item">
+            <label for="lname"> Cobertura<span>*</span></label>
+            <input id="cobertura" type="text" name="lname" required placeholder="100%"/>
+          </div>
+          <div class="item">
+            <label for="lname"> Costo<span>*</span></label>
+            <input id="costo" type="number" name="lname" required placeholder="10000"/>
+          </div>
+          <div class="item">
+            <label for="visit">Descripción<span>*</span></label>
+            <textarea id="descripcion" rows="4">Este plan de obra social ofrece una cobertura excepcional para tus necesidades de atención médica. En todos los casos, el plan cubrirá el 100% de tus gastos médicos, lo que significa que no tendrás que preocuparte por ningún costo adicional. Esto te brinda la máxima tranquilidad y acceso completo a todos los servicios de atención médica sin ninguna carga financiera.</textarea>
+          </div>
+        </div>
+        
+        <div class="btn-block">
+          <button type="submit" onclick="updateData()">Actualizar Plan</button>
+          <button type="submit" onclick="goBack()">Volver</button>
+        </div>
+    </div>
+    </div>
+  </body>
+</html>
+<script>
+    //load the image of the banner
+    var banner = document.getElementsByClassName("banner")[0];
+    banner.style.backgroundImage = "url('../fondo.png')";
+
+    function updateData(){
+      var nombre = document.getElementById("nombre").placeholder;
+      const userConfirmed = confirm("¿Desea actualizar la información para el plan: " + nombre + "?");
+      if (userConfirmed) {
+      // User clicked OK
+        alert("Se han actualizado los datos del plan: " + nombre);
+        window.location.href = "listadoPlanes.html";
+      } else {
+      // User clicked Cancel
+      }
+    }
+
+</script>
