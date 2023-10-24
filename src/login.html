@@ -6,6 +6,9 @@
     <link rel="stylesheet" type="text/css" href="/css/login.css">
 </head>
 <body>
+    <!-- Agrega una imagen del logotipo -->
+    <img src="logo.jpg" alt="Logo de la empresa" class="logo">
+
     <div class="login-container">
         <h2>Iniciar sesión</h2>
         <form action="/procesar_login.php" method="POST">
@@ -14,13 +17,13 @@
                 <input type="text" id="username" name="usuario" required>
             </div>
             <div class="form-group">
-                <label for="contrasena">Contraseña:</label>
+                <label for "contrasena">Contraseña:</label>
                 <input type="password" id="password" name="contrasena" required>
             </div>
         </form>
-            <div class="form-group">
-                <button type="submit" onclick="login()">Iniciar sesión</button>
-            </div>
+        <div class="form-group">
+            <button type="submit" onclick="login()">Iniciar sesión</button>
+        </div>
     </div>
 </body>
 </html>
