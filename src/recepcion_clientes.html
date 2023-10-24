@@ -17,6 +17,15 @@
                 <button id="reintegro-button">Solicitar Reintegro</button>
                 <button id="cobertura-button">Solicitar Cobertura</button>
             </div>
+            <br>
+        </div>
+    </div>
+    <div class="testbox">
+        <div class="formulario">
+            <div class="buttons-container">
+                <button id="editar-propio-button">Editar datos<br>propios</button>
+                <button id="logout">Cerrar<br>Sesión</button>
+            </div>
         </div>
     </div>
     <script>
@@ -30,6 +39,14 @@
 
         document.getElementById('cobertura-button').addEventListener('click', function() {
             window.location.href = "cobertura.html";
+        });
+
+        document.getElementById('logout').addEventListener('click', function() {
+            window.location.href = "login.html";
+        });
+
+        document.getElementById('editar-propio-button').addEventListener('click', function() {
+            window.location.href = "editarDatosCliente.html";
         });
     </script>
 </body>
