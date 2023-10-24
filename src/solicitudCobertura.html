@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitudes pendientes</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="testbox">
+        <div class="formulario">
+            <div class="banner">
+                <h1>Aceptar solicitud de cobertura</h1>
+            </div>
+            <br>
+                <div class="colums">
+                    <div class="item">
+                        <label for="edad" style="font-weight: bold; font-size: large;">CLIENTE: cliente1 (41.740.466)</label>
+                    </div>
+                    <div class="item">
+                        <label for="edad" style="font-weight: bold; font-size: large;">SOLICITUD: Cobertura nivel ORO</label>
+                    </div>
+
+                    <div class="item">
+                        <div class="colums">
+                            <div class="item">
+                                <label for="edad" style="font-weight: bold; font-size: large;">NOMBRE:<br>Ramiro</label>
+                            </div>
+                            <div class="item">
+                                <label for="edad" style="font-weight: bold; font-size: large;">APPELLIDO:<br>Cejas</label>
+                            </div>
+                            <div class="item">
+                                <label for="edad" style="font-weight: bold; font-size: large;">DNI:<br>41.740.466</label>
+                            </div>
+                            <div class="item">
+                                <label for="edad" style="font-weight: bold; font-size: large;">NACIMIENTO:<br>28/03/1999</label>
+                            </div>
+                            <div class="item">
+                                <label for="edad" style="font-weight: bold; font-size: large;">GENERO:<br>Masculino</label>
+                            </div>
+                            <div class="item">
+                                <label for="edad" style="font-weight: bold; font-size: large;">E-MAIL:<br>ramiro.cejas.cs@gmail.com</label>
+                            </div>
+                            <div class="item">
+                                <label for="edad" style="font-weight: bold; font-size: large;">TELEFONO:<br>+54 11 23899873</label>
+                            </div>
+                            <div class="item">
+                            </div>
+                            <div class="item">
+                                <label for="edad" style="font-weight: bold; font-size: large;">DIRECCIÓN:<br>Thompson 94</label>
+                            </div>
+                            <div class="item">
+                                <label for="edad" style="font-weight: bold; font-size: large;">CIUDAD:<br>Bahía Blanca</label>
+                            </div>
+                            <div class="item">
+                                <label for="edad" style="font-weight: bold; font-size: large;">PROVINCIA:<br>Buenos Aires</label>
+                            </div>
+                            <div class="item">
+                                <label for="edad" style="font-weight: bold; font-size: large;">CÓDIGO POSTAL:<br>8000</label>
+                            </div>
+                        </div>
+                    
+                    </div>
+
+                    <div class="item">
+                        <div class="colums">
+                            <label for="edad" style="font-weight: bold; font-size: large;">DETALLE DE COBERTURA</label>
+                            <br>
+                            <br>
+                            <div class="item">
+                                <label for="edad" style="font-weight: bold; font-size: large;">NOMBRE:<br>Plan ORO</label>
+                            </div>
+                            <div class="item">
+                                <label for="edad" style="font-weight: bold; font-size: large;">COBERTURA:<br>100%</label>
+                            </div>
+                            <div class="item">
+                                <label for="edad" style="font-weight: bold; font-size: large;">PRECIO:<br>$10.000</label>
+                            </div>
+                            <div class="item">
+                                <label for="edad" style="font-weight: bold; font-size: large;">VENCIMIENTO:<br>24/10/2024</label>
+                            </div>
+                            
+                        </div>                    
+                    </div>
+                    <div></div>
+                    <div class="btn-block">
+                        <button type="submit" onclick="aceptar()" style="font-weight: bold; font-size: large;">Aceptar</button>
+                        <button type="submit" class="cancel" onclick="rechazar()" style="font-weight: bold; font-size: large;">Rechazar</button>
+                    </div>
+                </div>
+            <br>
+        </div>
+    </div>
+
+    <script>
+        //load the image of the banner
+        var banner = document.getElementsByClassName("banner")[0];
+        banner.style.backgroundImage = "url('../fondo.png')";
+
+        function aceptar() {
+            const userConfirmed = confirm("¿Desea aceptar la solicitud?");
+            if (userConfirmed) {
+            // User clicked OK
+            alert("Solicitud aceptada!");
+            window.location.href = "listadoSolicitudes.html";
+            } else {
+            // User clicked Cancel
+            }
+        }
+
+        function rechazar() {
+            const userConfirmed = confirm("¿Desea rechazar la solicitud?");
+            if (userConfirmed) {
+            // User clicked OK
+            alert("Solicitud rechazada!");
+            window.location.href = "listadoSolicitudes.html";
+            } else {
+            // User clicked Cancel
+            }
+        }
+
+    </script>
+</body>
+</html>

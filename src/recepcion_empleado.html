@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recepción de Clientes</title>
-    <link rel="stylesheet" href="css/recepcion_clientes.css">
+    <title>Recepción de Empleados</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="banner">
-        <h1>Bienvenido a nuestra página de recepción de clientes</h1>
+        <h1>Bienvenido a nuestra página de recepción de empleados</h1>
     </div>
     <div class="testbox">
         <div class="formulario">
             <div class="buttons-container">
-                <button id="reintegro-button">Registrar cliente</button>
-                <button id="cobertura-button"> ????? </button>
-                <button id=" X X X"> ????? </button> //TODO
+                <button id="registrar-cliente">Registrar<br>cliente</button>
+                <button id="cobertura-button">Aprobar<br>solicitudes</button>
+                <button id="editar-clientes-button">Editar datos<br>de Clientes</button>
+
+            </div>
+        </div>
+    </div>
+    <div class="testbox">
+        <div class="formulario">
+            <div class="buttons-container">
+                <button id="editar-propio-button">Editar datos<br>propios</button>
+                <button id="cerrar-sesion-button">Cerrar<br>sesión</button>
 
             </div>
         </div>
@@ -25,12 +34,23 @@
         var banner = document.getElementsByClassName("banner")[0];
         banner.style.backgroundImage = "url('../fondo.png')";
 
-        document.getElementById('reintegro-button').addEventListener('click', function() {
-            window.location.href = "reintegro.html";
+        document.getElementById('registrar-cliente').addEventListener('click', function() {
+            window.location.href = "registrarCliente.html";
         });
 
         document.getElementById('cobertura-button').addEventListener('click', function() {
-            window.location.href = "cobertura.html";
+            window.location.href = "listadoSolicitudes.html";
+        });
+        document.getElementById('cerrar-sesion-button').addEventListener('click', function() {
+            window.location.href = "login.html";
+        });
+
+        document.getElementById('editar-clientes-button').addEventListener('click', function() {
+            window.location.href = "listadoClientes.html";
+        });
+
+        document.getElementById('editar-propio-button').addEventListener('click', function() {
+            window.location.href = "editarDatosEmpleado.html";
         });
     </script>
 </body>

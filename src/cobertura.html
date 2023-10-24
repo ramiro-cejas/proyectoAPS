@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coberturas</title>
-    <link rel="stylesheet" href="css/recepcion_clientes.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="testbox">
@@ -16,30 +16,32 @@
             <p> <center>Por favor seleccione un plan.</center>
             </p>
             <br />
+
+            <div class="item">
+                <label for="edad" style="font-weight: bold; font-size: large;">ACTUALMENTE NO TIENE COBERTURA REGISTRADA</label>
+            </div>
             <div class="colums">
                 <div class="item">
-                    <label for="dni"> DNI<span>*</span></label>
-                    <input id="dni" type="number" name="dni" required/>
+                    <label for="visit">ACLARACIONES</label>
+                    <textarea id="aclaraciones" rows="3"></textarea>
                 </div>
-                <div class="item">
-                    <label for="edad"> Edad<span>*</span></label>
-                    <input id="edad" type="number" name="edad" required/>
+                <div class="colums">
+                    <div class="item">
+                        <p>Plan<span>*</span></p>
+                        <select id="plan" class="" onchange="mostrarInfoPlan()">
+                            <option selected value="none" disabled></option>
+                            <option value="ORO">ORO</option>
+                            <option value="PLATA">PLATA</option>
+                            <option value="COBRE">COBRE</option>
+                        </select>
+                    </div>
+                    <div id="infoPlan" class="info-plan"></div>
                 </div>
-                <div class="item">
-                    <p>Plan<span>*</span></p>
-                    <select id="plan" class="" onchange="mostrarInfoPlan()">
-                        <option selected value="none" disabled></option>
-                        <option value="o">ORO</option>
-                        <option value="p">PLATA</option>
-                        <option value="c">COBRE</option>
-                    </select>
-                </div>
+                
             </div>
+
             <div class="btn-block">
-                <button type="submit" onclick="asignarCobertura()">Registrar</button>
-            </div>
-            <div id="infoPlan" class="info-plan">
-                <!-- Acá se mostrará la información del plan seleccionado -->
+                <button type="submit" onclick="solicitarCobertura()">Solicitar Cobertura</button>
             </div>
         </div>
     </div>
@@ -49,19 +51,21 @@
         var banner = document.getElementsByClassName("banner")[0];
         banner.style.backgroundImage = "url('../fondo.png')";
 
-        function asignarCobertura() {
-            //check all fields
-        var dni = document.getElementById("dni").value;
-        var edad = document.getElementById("edad").value;
-        var plan = document.getElementById("plan").value;
-
-        if(dni == "" || edad == "" || plan == "none") {
-            alert("completa todos los campos");
-        } else if(dni < 0 || edad < 0) {
-            alert("Dni o edad invalidos");
-        } else {
-            alert("Nuevo plan asignado!");
-        }
+        function solicitarCobertura() {
+            if (!isSelect) {
+                alert("Por favor seleccione un plan");
+            } else {
+                let plan = document.getElementById("plan").value;
+                const userConfirmed = confirm("¿Desea solicitar el plan: " + plan + "?");
+                if (userConfirmed) {
+                // User clicked OK
+                    alert("Solicitud enviada!");
+                    window.location.href = "recepcion_clientes.html";
+                } else {
+                // User clicked Cancel
+                }
+            }
+            
         }
 
         var planOro = {
@@ -80,6 +84,8 @@
             costo: 5000
         };
         
+        let isSelect = false;
+
         function mostrarInfoPlan() {
             var planSeleccionado = document.getElementById("plan").value;
             var infoPlan = document.getElementById("infoPlan");
@@ -87,25 +93,26 @@
             // Limpia el contenido del recuadro de información del plan
             infoPlan.innerHTML = "";
 
-            if (planSeleccionado === "o") {
+            if (planSeleccionado === "ORO") {
                 infoPlan.innerHTML = `
                     <h2>${planOro.nombre}</h2>
                     <p>Cobertura: ${planOro.cobertura}</p>
                     <p>Costo: $${planOro.costo}</p>
                 `;
-            } else if (planSeleccionado === "p") {
+            } else if (planSeleccionado === "PLATA") {
                 infoPlan.innerHTML = `
                     <h2>${planPlata.nombre}</h2>
                     <p>Cobertura: ${planPlata.cobertura}</p>
                     <p>Costo: $${planPlata.costo}</p>
                 `;
-            } else if (planSeleccionado === "c") {
+            } else if (planSeleccionado === "COBRE") {
                 infoPlan.innerHTML = `
                     <h2>${planCobre.nombre}</h2>
                     <p>Cobertura: ${planCobre.cobertura}</p>
                     <p>Costo: $${planCobre.costo}</p>
                 `;
             }
+            isSelect = true;
         }
     </script>
 </body>

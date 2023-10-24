@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reintegros</title>
-    <link rel="stylesheet" href="css/recepcion_clientes.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="testbox">
@@ -18,26 +18,19 @@
             <br />
             <div class="colums">
                 <div class="item">
-                    <label for="dni"> DNI<span>*</span></label>
-                    <input id="dni" type="number" name="dni" required/>
+                    <label for="visit">ACLARACIONES</label>
+                    <textarea id="aclaraciones" rows="3"></textarea>
                 </div>
                 <div class="item">
-                    <p>Fecha<span>*</span></p>
-                    <input id="fecha" type="date" name="fecha" required/>
-                    <i class="fas fa-calendar-alt"></i>
-                  </div>
-                <div class="item">
-                    <p>Plan del asociado<span>*</span></p>
-                    <select id="plan" class="">
-                        <option selected value="none" disabled></option>
-                        <option value="o">ORO</option>
-                        <option value="p">PLATA</option>
-                        <option value="c">COBRE</option>
-                    </select>
+                    <label for="dni"> COMPROBANTE o RECIBO<span>*</span></label>
+                    <input type="file" accept="image/*" id="imageInput">
+                    <div id="imageContainer">
+                      <img id="selectedImage" src="" alt="Selected Image">
+                    </div>        
                 </div>
             </div>
             <div class="btn-block">
-                <button type="submit" onclick="solicitarReintegro()">Solicitar</button>
+                <button type="submit" onclick="solicitarReintegro()">Solicitar Reintegro</button>
             </div>
             <div id="infoPlan" class="info-plan">
                 <!-- Acá se mostrará la información del plan seleccionado -->
@@ -50,19 +43,33 @@
         var banner = document.getElementsByClassName("banner")[0];
         banner.style.backgroundImage = "url('../fondo.png')";
 
-        function solicitarReintegro() {
-        //check all fields
-        var dni = document.getElementById("dni").value;
-        var fecha = document.getElementById("fecha").value;
-        var plan = document.getElementById("plan").value;
+        const imageInput = document.getElementById("imageInput");
+        const selectedImage = document.getElementById("selectedImage");
+        const imageContainer = document.getElementById("imageContainer");
+        let selected = false;
 
-        if(dni == "" || fecha == "" || plan == "none") {
-            alert("Completa todos los campos");
-        } else if(dni < 0) {
-            alert("Dni invalido");
+        imageInput.addEventListener("change", function() {
+        const selectedFile = imageInput.files[0];
+        if (selectedFile) {
+            const imageURL = URL.createObjectURL(selectedFile);
+            selectedImage.src = imageURL;
+            imageContainer.style.display = "block"; // Show the container
+            selected = true;
         } else {
-            alert("Solicitud de reintegro registrada!");
+            selectedImage.src = ""; // Clear the image
+            imageContainer.style.display = "none"; // Hide the container
+            selected = false;
         }
+        });
+
+        function solicitarReintegro() {
+            //if none image selected then alert
+            if(selected == false){
+                alert("Por favor seleccione una imagen");
+            } else {
+                alert("Reintegro solicitado con éxito");
+                window.location.href = "recepcion_clientes.html";
+            }
         }
     </script>
 </body>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="/js/connection.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <title>Editar Datos</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div class="testbox">
+      <div class="formulario">
+        <div class="banner">
+          <h1>Editar Datos</h1>
+        </div>
+        <br/>
+        </p> 
+        <br/>
+        <div class="colums">
+          <div class="item">
+            <label for="fname"> Nombre<span>*</span></label>
+            <input id="nombre" type="text" name="fname" required placeholder="Simon"/>
+          </div>
+          <div class="item">
+            <label for="lname"> Apellido<span>*</span></label>
+            <input id="apellido" type="text" name="lname" required placeholder="Fredes"/>
+          </div>
+          <div class="item">
+            <label for="lname"> CUIL<span>*</span></label>
+            <input id="dni" type="number" name="lname" required placeholder="20421643742"/>
+          </div>
+          <div class="item">
+            <p>Fecha de nacimiento<span>*</span></p>
+            <input id="nacimiento" type="date" name="bdate" required value="1999-10-12"/>
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <div class="item">
+            <p>Genero<span>*</span></p>
+            <select id="genero" class="">
+              <option value="m" selected >Masculino </option>
+              <option value="f">Femenino</option>
+              <option value="o">Otro</option>
+            </select>
+          </div>
+          <div class="item">
+            <label for="eaddress">E-Mail<span>*</span></label>
+            <input id="email" type="email"   name="eaddress" required placeholder="simonfredes7@gmail.com"/>
+          </div>
+          <div class="item">
+            <label for="phone">Telefono<span>*</span></label>
+            <input id="telefono" type="tel"   name="phone" required placeholder="+54 291 12345678"/>
+          </div>
+          <div class="item">
+            <label for="address1">Dirección<span>*</span></label>
+            <input id="direccion" type="text"   name="address1" required placeholder="Mitre 663"/>
+          </div>
+          <div class="item">
+            <label for="city">Ciudad<span>*</span></label>
+            <input id="ciudad" type="text"   name="city" required placeholder="Bahía Blanca"/>
+          </div>
+          <div class="item">
+            <label for="state">Provincia<span>*</span></label>
+            <input id="provincia" type="text"   name="state" required placeholder="Buenos Aires"/>
+          </div>
+          <div class="item">
+            <label for="code">Código Postal<span>*</span></label>
+            <input id="codigoPostal" type="text"   name="code" required placeholder="8000"/>
+          </div>
+          <div class="item">
+            <button type="submit" onclick="changePassword()">Cambiar Contraseña</button>
+          </div>
+        </div>
+        <div class="item">
+          <label for="visit">Aclaraciones</label>
+          <textarea id="aclaraciones" rows="3"></textarea>
+        </div>
+        
+        <div class="btn-block">
+          <button type="submit" onclick="updateInfo()">Actualizar Datos</button>
+        </div>
+    </div>
+    </div>
+  </body>
+</html>
+<script>
+    //load the image of the banner
+    var banner = document.getElementsByClassName("banner")[0];
+    banner.style.backgroundImage = "url('../fondo.png')";
+
+    function updateInfo(){
+        var dni = document.getElementById("dni").placeholder;
+        const userConfirmed = confirm("¿Desea actualizar la información para el usuario: " + dni + "?");
+        if (userConfirmed) {
+        // User clicked OK
+          alert("Se han actualizado los datos del cliente: " + dni);
+          window.location.href = "recepcion_empleado.html";
+        } else {
+        // User clicked Cancel
+        }
+    }
+
+    function changePassword(){
+      window.location.href = "changePassword.html";
+    }
+
+    function validarEmail(email) {
+      // Expresión regular para validar el formato de un correo electrónico
+      var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      return regex.test(email);
+    }
+    
+    function tieneMayuscula(palabra) {
+      // Expresión regular para buscar al menos una letra mayúscula
+      var regex = /[A-Z]/;
+      return regex.test(palabra);
+    }
+
+    function tieneNumero(palabra) {
+      // Expresión regular para buscar al menos un número
+      var regex = /[0-9]/;
+      return regex.test(palabra);
+    }
+
+</script>

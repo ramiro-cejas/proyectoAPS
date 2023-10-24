@@ -3,7 +3,7 @@
   <head>
     <script src="/js/connection.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
-    <title>Registrar Empleado</title>
+    <title>Editar Datos</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   </head>
@@ -12,74 +12,72 @@
     <div class="testbox">
       <div class="formulario">
         <div class="banner">
-          <h1>Registrar Empleado</h1>
+          <h1>Editar Datos</h1>
         </div>
         <br/>
-        <p> <center>Por favor ingrese los datos del empleado.</center>
-        </p>
+        </p> 
         <br/>
         <div class="colums">
           <div class="item">
             <label for="fname"> Nombre<span>*</span></label>
-            <input id="nombre" type="text" name="fname" required/>
+            <input id="nombre" type="text" name="fname" required placeholder="Ramiro"/>
           </div>
           <div class="item">
             <label for="lname"> Apellido<span>*</span></label>
-            <input id="apellido" type="text" name="lname" required/>
+            <input id="apellido" type="text" name="lname" required placeholder="Cejas"/>
           </div>
           <div class="item">
-            <label for="lname"> CUIL<span>*</span></label>
-            <input id="cuil" type="number" name="lname" required/>
+            <label for="lname"> DNI<span>*</span></label>
+            <input id="dni" type="number" name="lname" required placeholder="41740466"/>
           </div>
           <div class="item">
             <p>Fecha de nacimiento<span>*</span></p>
-            <input id="nacimiento" type="date" name="bdate" required/>
+            <input id="nacimiento" type="date" name="bdate" required value="1999-03-28"/>
             <i class="fas fa-calendar-alt"></i>
           </div>
           <div class="item">
             <p>Genero<span>*</span></p>
             <select id="genero" class="">
-              <option selected value="none" disabled selected></option>
-              <option value="m" >Masculino</option>
+              <option value="m" selected >Masculino </option>
               <option value="f">Femenino</option>
               <option value="o">Otro</option>
             </select>
           </div>
           <div class="item">
             <label for="eaddress">E-Mail<span>*</span></label>
-            <input id="email" type="email"   name="eaddress" required/>
+            <input id="email" type="email"   name="eaddress" required placeholder="ramiro.cejas.cs@gmail.com"/>
           </div>
           <div class="item">
             <label for="phone">Telefono<span>*</span></label>
-            <input id="telefono" type="tel"   name="phone" required/>
+            <input id="telefono" type="tel"   name="phone" required placeholder="+54 11 23899873"/>
           </div>
           <div class="item">
             <label for="address1">Dirección<span>*</span></label>
-            <input id="direccion" type="text"   name="address1" required/>
+            <input id="direccion" type="text"   name="address1" required placeholder="Thompson 94"/>
           </div>
           <div class="item">
             <label for="city">Ciudad<span>*</span></label>
-            <input id="ciudad" type="text"   name="city" required/>
+            <input id="ciudad" type="text"   name="city" required placeholder="Bahía Blanca"/>
           </div>
           <div class="item">
             <label for="state">Provincia<span>*</span></label>
-            <input id="provincia" type="text"   name="state" required/>
+            <input id="provincia" type="text"   name="state" required placeholder="Buenos Aires"/>
           </div>
           <div class="item">
             <label for="code">Código Postal<span>*</span></label>
-            <input id="codigoPostal" type="text"   name="code" required/>
+            <input id="codigoPostal" type="text"   name="code" required placeholder="8000"/>
           </div>
           <div class="item">
-            <label for="code">Cargo<span>*</span></label>
-            <input id="cargo" type="text"   name="code" required/>
+            <button type="submit" onclick="generateNewPassword()">Generar nueva contraseña</button>
           </div>
         </div>
         <div class="item">
           <label for="visit">Aclaraciones</label>
           <textarea id="aclaraciones" rows="3"></textarea>
         </div>
+        
         <div class="btn-block">
-          <button type="submit" onclick="signUpEmployee()">Registrar</button>
+          <button type="submit" onclick="updateInfo()">Actualizar Datos</button>
         </div>
     </div>
     </div>
@@ -90,41 +88,30 @@
     var banner = document.getElementsByClassName("banner")[0];
     banner.style.backgroundImage = "url('../fondo.png')";
 
-    function signUpEmployee(){
-        //check all fields
-        var nombre = document.getElementById("nombre").value;
-        var apellido = document.getElementById("apellido").value;
-        var nacimiento = document.getElementById("nacimiento").value;
-        var genero = document.getElementById("genero").value;
-        var email = document.getElementById("email").value;
-        var telefono = document.getElementById("telefono").value;
-        var direccion = document.getElementById("direccion").value;
-        var ciudad = document.getElementById("ciudad").value;
-        var provincia = document.getElementById("provincia").value;
-        var codigoPostal = document.getElementById("codigoPostal").value;
-        var cuil = document.getElementById("cuil").value;
-        var aclaraciones = document.getElementById("aclaraciones").value;
-        var cargo = document.getElementById("cargo").value;
-        if(nombre == "" || apellido == "" || nacimiento == "" || genero == "" || email == "" || telefono == "" || direccion == "" || ciudad == "" || provincia == "" || codigoPostal == "" || cuil == "" || cargo == ""){
-            alert("Por favor complete todos los campos");
-        } else if(!validarEmail(email)) {
-            alert("El email no es valido");
-        } else{
-          //call the procedure of mysql to register the client
-          //for now we just print the generated password and the username to the client, but we should send an email
-          var password = generatePassword();
-          var legajo = generateLegajo();
-          alert("Se ha registrado el empleado "+cuil+" con legajo "+legajo+"\nSu usuario es: " + legajo + " y su contraseña es: " + password);
+    function updateInfo(){
+        var dni = document.getElementById("dni").placeholder;
+        const userConfirmed = confirm("¿Desea actualizar la información para el usuario: " + dni + "?");
+        if (userConfirmed) {
+        // User clicked OK
+          alert("Se han actualizado los datos del cliente: " + dni);
+          window.location.href = "recepcion_clientes.html";
+        } else {
+        // User clicked Cancel
         }
     }
 
-    function generateLegajo(){
-      //generate a random legajo
-      var legajo = "";
-      for(var i = 0; i < 8; i++){
-        legajo += Math.floor(Math.random() * 10);
+    function generateNewPassword(){
+      var password = generatePassword();
+      var dni = document.getElementById("dni").placeholder;
+      
+      const userConfirmed = confirm("¿Desea generar una nueva contraseña para el usuario: " + dni + "?");
+      if (userConfirmed) {
+      // User clicked OK
+        alert("Se ha generado la nueva contraseña para el usuario: " + dni + "\nLa nueva contraseña es: " + password);
+      } else {
+      // User clicked Cancel
       }
-      return legajo;
+               
     }
 
     function generatePassword(){

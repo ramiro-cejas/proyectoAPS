@@ -21,6 +21,7 @@ html, body {
     textarea {
     width: calc(100% - 12px);
     padding: 5px;
+    resize: none;
     }
     .testbox {
     display: flex;
@@ -30,11 +31,21 @@ html, body {
     padding: 20px;
     }
     .formulario {
-    width: 100%;
-    padding: 20px;
-    border-radius: 6px;
-    background: #fff;
-    box-shadow: 0 0 8px  #669999; 
+        width: 100%;
+        padding: 20px;
+        border-radius: 6px;
+        background: #fff;
+        box-shadow: 0 0 8px  #669999; 
+        }
+    .formulario2 {
+        width: 97%;
+        padding: 20px;
+        border-radius: 6px;
+        background: #fff;
+        box-shadow: 0 0 8px  #669999; 
+        }
+    .cancel{
+        background-color: firebrick;
     }
     .banner {
     position: relative;
@@ -85,7 +96,6 @@ html, body {
     }
     .week {
     display:flex;
-    justfiy-content:space-between;
     }
     .colums {
     display:flex;
@@ -96,6 +106,17 @@ html, body {
     .colums div {
     width:48%;
     }
+
+    .colums2 {
+        display:flex;
+        justify-content:space-between;
+        flex-direction:row;
+        flex-wrap:wrap;
+    }
+    .colums2 div {
+        width:32%;
+    }
+
     input[type="date"]::-webkit-inner-spin-button {
     display: none;
     }
@@ -171,7 +192,7 @@ html, body {
     cursor: pointer;
     }
     button:hover {
-    background:  #a3c2c2;
+    background:  #a9a9a9;
     }
     .name-item input, .name-item div {
     width: calc(50% - 20px);
@@ -190,3 +211,21 @@ html, body {
     input[type="date"]::-webkit-inner-spin-button {
     display: none;
     }
+
+    #imageContainer {
+        max-width: 300px;
+        max-height: 300px;
+        border: 1px solid #000; /* Optional: add a border for the container */
+        overflow: hidden; /* Hide any image overflow */
+        display: none; /* Hide the container by default */
+      }
+      
+      #selectedImage {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto; /* Allow the image to expand within the container */
+        height: auto; /* Allow the image to expand within the container */
+        display: block;
+      }
+      
+      
