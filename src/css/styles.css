@@ -44,6 +44,7 @@ html, body {
         background: #fff;
         box-shadow: 0 0 8px  #669999; 
         }
+    
     .cancel{
         background-color: firebrick;
     }
@@ -105,6 +106,16 @@ html, body {
     }
     .colums div {
     width:48%;
+    }
+
+    .colums3 {
+        display:flex;
+        justify-content:space-between;
+        flex-direction:row;
+        flex-wrap:wrap;
+    }
+    .colums3 div {
+        width:48%;
     }
 
     .colums2 {
@@ -191,6 +202,16 @@ html, body {
     color: #fff;
     cursor: pointer;
     }
+    .button2 {
+        width: 150px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px; 
+        background:  #669999;
+        font-size: 16px;
+        color: #fff;
+        cursor: pointer;
+    }
     button:hover {
     background:  #a9a9a9;
     }
@@ -227,5 +248,67 @@ html, body {
         height: auto; /* Allow the image to expand within the container */
         display: block;
       }
+      label{
+        font-weight: bold; 
+        font-size: large;
+      }
       
-      
+@media (max-width: 768px) {
+    .formulario {
+        width: 99%;
+        padding: 10px;
+        border-radius: 6px;
+        background: #fff;
+        box-shadow: 0 0 8px  #669999; 
+    }
+    .formulario2 {
+        width: 94%;
+        padding: 10px;
+        border-radius: 6px;
+        background: #fff;
+        box-shadow: 0 0 8px  #669999; 
+    }
+    button {
+        width: 49%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px; 
+        background:  #669999;
+        font-size: 16px;
+        color: #fff;
+        cursor: pointer;
+        margin-bottom: 5px;
+    }
+    .button2 {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px; 
+        background:  #669999;
+        font-size: 16px;
+        color: #fff;
+        cursor: pointer;
+        margin-bottom: 5px;
+    }
+    h1 {
+        position: absolute;
+        margin: 0;
+        font-size: 20px;
+        color: #fff;
+        z-index: 2;
+        line-height: 20px;
+    }
+    label {
+        font-size: small;
+    }
+    
+    .colums3 {
+        display:flex;
+        justify-content:space-between;
+        flex-direction:column;
+        flex-wrap:wrap;
+    }
+    .colums3 div {
+        width:100%;
+    }
+}

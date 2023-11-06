@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
 }
@@ -86,4 +86,21 @@ body {
 
 .forgot-password:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+
+    .login-container {
+        margin-top: 30px;
+    }
+
+    .logo {
+        position: relative;
+        top: 20px;
+        left: 25%;
+        width: 50%;
+        transform: none;
+        margin-bottom: 20px;
+    }
+
 }

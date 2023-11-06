@@ -4,6 +4,7 @@
 <head>
     <title>Iniciar sesión</title>
     <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <!-- Agrega una imagen del logotipo -->
@@ -27,3 +28,31 @@
     </div>
 </body>
 </html>
+
+
+<script>
+    var cuadroTexto1 = document.getElementById("username");
+
+    var cuadroTexto2 = document.getElementById("password");
+
+    // Agrega un evento "keydown" para detectar cuando se presiona una tecla
+    cuadroTexto1.addEventListener("keydown", function(event) {
+    // Verifica si la tecla presionada es "Enter" (código 13)
+    if (event.keyCode === 13) {
+        // Aquí puedes agregar la lógica que deseas ejecutar cuando se presiona "Enter"
+        // Por ejemplo, puedes llamar a una función
+        login();
+    }
+    });
+
+    // Agrega un evento "keydown" para detectar cuando se presiona una tecla
+    cuadroTexto2.addEventListener("keydown", function(event) {
+    // Verifica si la tecla presionada es "Enter" (código 13)
+    if (event.keyCode === 13) {
+        // Aquí puedes agregar la lógica que deseas ejecutar cuando se presiona "Enter"
+        // Por ejemplo, puedes llamar a una función
+        login();
+    }
+    });
+
+</script>
